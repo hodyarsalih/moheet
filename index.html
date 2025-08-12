@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Moheet Al Dahabi L.L.C - Dubai's Premier Wholesale Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('en')" class="active">English</button>
+        <button onclick="switchLanguage('ar')">عربي</button>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="Al Moheet Al Dahabi L.L.C Logo" class="logo">
+            <div class="header-text">
+                <h1>Al Moheet Al Dahabi L.L.C</h1>
+                <p class="slogan">Empowering Trade, Delivering Value</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <h2>Welcome to Al Moheet Al Dahabi L.L.C</h2>
+            <p>
+                At Al Moheet Al Dahabi L.L.C, we take pride in being one of Dubai's leading wholesale trading companies, supplying a diverse range of high-quality products to retailers, distributors, and businesses across the UAE and the broader Middle East. With a strong foundation in reliability, efficiency, and customer satisfaction, we have earned the trust of our partners by consistently delivering exceptional value and service.
+            </p>
+        </section>
+
+        <section id="products" class="section">
+            <h2>Our Product Range</h2>
+            <div class="product-grid">
+                <div class="product-category">
+                    <img src="electrical.png" alt="Electronics and Electrical" class="product-image">
+                    <h3>Electronics & Electrical</h3>
+                    <p>High-quality electronic goods, appliances, and electrical accessories for your business needs</p>
+                </div>
+                <div class="product-category">
+                    <img src="Home-Appliances.png" alt="Home Appliances" class="product-image">
+                    <h3>Home Appliances</h3>
+                    <p>Premium home appliances and modern household equipment</p>
+                </div>
+                <div class="product-category">
+                    <img src="beauty.png" alt="Beauty Products" class="product-image">
+                    <h3>Beauty & Personal Care</h3>
+                    <p>Top-quality beauty products and personal care items</p>
+                </div>
+                <div class="product-category">
+                    <img src="clean.webp" alt="Cleaning Supplies" class="product-image">
+                    <h3>Cleaning Supplies</h3>
+                    <p>Professional cleaning products and maintenance supplies</p>
+                </div>
+                <div class="product-category">
+                    <img src="stationary.png" alt="Stationery" class="product-image">
+                    <h3>Office & Stationery</h3>
+                    <p>Complete range of office supplies and professional stationery</p>
+                </div>
+                <div class="product-category">
+                    <img src="accesories.png" alt="Accessories" class="product-image">
+                    <h3>Accessories</h3>
+                    <p>Fashion accessories and trending merchandise</p>
+                </div>
+                <div class="product-category">
+                    <img src="gym.png" alt="Fitness Equipment" class="product-image">
+                    <h3>Fitness Equipment</h3>
+                    <p>Professional gym and fitness equipment</p>
+                </div>
+                <div class="product-category">
+                    <img src="watch.png" alt="Watches" class="product-image">
+                    <h3>Watches</h3>
+                    <p>Premium watches and timepieces</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item address-container">
+                    <strong>Visit Us:</strong>
+                    <p>AL Qusais Industrial Third, AlNoor Building, 407-D-18</p>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.4721247965966!2d55.39!3d25.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d3a7cd6de99%3A0x3f3debf772989dcd!2sAl%20Qusais%20Industrial%20Area%203%20-%20Al%20Qusais%20Industrial%20Area%20-%20Dubai!5e0!3m2!1sen!2sae!4v1620000000000!5m2!1sen!2sae"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <p><a href="tel:+971542442404">+971 54 244 2404</a></p>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <p><a href="mailto:almuheetaldahabi@gmail.com">almuheetaldahabi@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2025 Al Moheet Al Dahabi L.L.C. All rights reserved.</p>
+        <p class="license">License No: 1493267</p>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script>
+        function switchLanguage(lang) {
+            const buttons = document.querySelectorAll('.language-switcher button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update content using translations from translations.js
+            document.title = translations[lang].title;
+            document.querySelector('.slogan').textContent = translations[lang].slogan;
+            document.querySelector('#about h2').textContent = translations[lang].welcome.title;
+            document.querySelector('#about p').textContent = translations[lang].welcome.description;
+            
+            document.querySelector('#products h2').textContent = translations[lang].products.title;
+            
+            // Update product categories
+            const categories = ['electronics', 'homeAppliances', 'beauty', 'cleaning', 'office', 'accessories', 'fitness', 'watches'];
+            categories.forEach((category, index) => {
+                const element = document.querySelectorAll('.product-category')[index];
+                if (element) {
+                    element.querySelector('h3').textContent = translations[lang].products[category].title;
+                    element.querySelector('p').textContent = translations[lang].products[category].description;
+                }
+            });
+            
+            // Update contact section
+            document.querySelector('#contact h2').textContent = translations[lang].contact.title;
+            document.querySelector('#contact .address-container strong').textContent = translations[lang].contact.visit;
+            document.querySelector('#contact .contact-item:nth-child(2) strong').textContent = translations[lang].contact.phone;
+            document.querySelector('#contact .contact-item:nth-child(3) strong').textContent = translations[lang].contact.email;
+
+            // Update footer
+            document.querySelector('.copyright').textContent = translations[lang].footer.copyright;
+            document.querySelector('.license').textContent = translations[lang].footer.license;
+        }
+    </script>
+</body>
+</html>
