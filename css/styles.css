@@ -335,6 +335,45 @@ html[lang="ar"] .footer-nav a {
   max-width: 42rem;
 }
 
+/* DH COUTURE script logo — restrained halo (shared with payment success) */
+.glow-logo-wrap {
+  margin: 0 auto 1.5rem;
+}
+
+.glow-logo-wrap img {
+  width: min(320px, 88vw);
+  height: auto;
+  display: block;
+  margin-inline: auto;
+  /* Depth on black, hairline warm edge, soft champagne bloom — low saturation, no harsh rings */
+  filter:
+    drop-shadow(0 4px 16px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 1px rgba(222, 206, 170, 0.35))
+    drop-shadow(0 0 22px rgba(168, 142, 100, 0.2))
+    drop-shadow(0 0 52px rgba(130, 108, 74, 0.11))
+    drop-shadow(0 0 88px rgba(96, 78, 52, 0.06));
+}
+
+.hero-dh-mark {
+  opacity: 0;
+  animation: fadeUp 1s var(--ease-out) 0s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dh-mark {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.payment-success-logo {
+  margin-bottom: 1.75rem;
+}
+
+.payment-success-logo img {
+  width: min(260px, 78vw);
+}
+
 .hero-eyebrow {
   font-size: 0.72rem;
   letter-spacing: 0.35em;
