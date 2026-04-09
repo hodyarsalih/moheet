@@ -833,3 +833,115 @@ section {
 .policy-back:hover {
   color: var(--text);
 }
+
+/* Payment success (gateway redirect landing) */
+.success-page {
+  padding: calc(var(--header-h) + 2.5rem) 0 4rem;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-inner {
+  width: min(36rem, 92vw);
+  text-align: center;
+}
+
+.success-icon {
+  width: 4.25rem;
+  height: 4.25rem;
+  margin: 0 auto 1.5rem;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.85rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.5vw, 2.35rem);
+  font-weight: 500;
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+.success-lead {
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+.success-lead strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.success-ref {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  margin: 0 auto 1.75rem;
+  max-width: 28rem;
+  display: none;
+  word-break: break-all;
+}
+
+.success-ref.is-visible {
+  display: block;
+}
+
+.success-ref .success-ref-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  color: var(--text-muted);
+}
+
+.success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.success-actions a {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.success-actions a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.success-actions a.success-btn--gold {
+  background: rgba(232, 177, 74, 0.1);
+  border-color: var(--gold-soft);
+  color: var(--gold);
+}
+
+.success-actions a.success-btn--gold:hover {
+  background: rgba(232, 177, 74, 0.16);
+  border-color: var(--gold);
+}
