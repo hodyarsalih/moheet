@@ -93,7 +93,9 @@
       lblLegal: "Legal name",
       lblTrade: "Trade license",
       lblRegistered: "Registered location",
-      lblEmail: "Email",
+      lblDomain: "Official domain",
+      lblSupport: "Support",
+      lblTeam: "Team",
       lblUae: "UAE",
       lblIraq: "Iraq",
       companyName: "Al Moheet Al Dahabi Goods Wholesaler L.L.C",
@@ -197,7 +199,9 @@
       lblLegal: "الاسم القانوني",
       lblTrade: "رقم الرخصة",
       lblRegistered: "مكان التسجيل",
-      lblEmail: "البريد",
+      lblDomain: "النطاق الرسمي",
+      lblSupport: "الدعم",
+      lblTeam: "الفريق",
       lblUae: "الإمارات",
       lblIraq: "العراق",
       companyName: "شركة المحيط الذهبي لتجارة الجملة ذ.م.م",
@@ -337,24 +341,38 @@
     var companyUl = document.querySelector(".contact-card:first-child .contact-list");
     if (companyUl && t.companyName) {
       companyUl.querySelector("li:nth-child(1)").innerHTML =
-        '<span class="label">' + escapeHtml(t.lblLegal) + "</span> " + escapeHtml(t.companyName);
+        '<span class="label">' + escapeHtml(t.lblLegal) + "</span> " +
+        (lang === "en" ? goldAmadLettersEnHtml(t.companyName) : goldFirstHtml(t.companyName));
       companyUl.querySelector("li:nth-child(2)").innerHTML =
         '<span class="label">' + escapeHtml(t.lblTrade) + "</span> 1493267";
       companyUl.querySelector("li:nth-child(3)").innerHTML =
         '<span class="label">' + escapeHtml(t.lblRegistered) + "</span> " + escapeHtml(t.regLocation);
+      var domainNoteSuffix =
+        lang === "ar"
+          ? " · ترمز <span class=\"text-gold\">AMAD</span> إلى اسم الشركة " + goldFirstHtml("المحيط الذهبي") + "."
+          : " · <span class=\"text-gold\">AMAD</span> stands for " + goldAmadLettersEnHtml("Al Moheet Al Dahabi") + ".";
+      companyUl.querySelector("li:nth-child(4)").innerHTML =
+        '<span class="label">' +
+        escapeHtml(t.lblDomain) +
+        '</span> <a href="https://amad.ae" target="_blank" rel="noopener noreferrer">amad.ae</a>' +
+        domainNoteSuffix;
     }
 
     var directUl = document.querySelector(".contact-card:last-child .contact-list");
     if (directUl) {
       directUl.querySelector("li:nth-child(1)").innerHTML =
         '<span class="label">' +
-        escapeHtml(t.lblEmail) +
-        '</span> <a href="mailto:almuheetaldahabi@gmail.com">almuheetaldahabi@gmail.com</a>';
+        escapeHtml(t.lblSupport) +
+        '</span> <a href="mailto:support@amad.ae">support@amad.ae</a>';
       directUl.querySelector("li:nth-child(2)").innerHTML =
+        '<span class="label">' +
+        escapeHtml(t.lblTeam) +
+        '</span> <a href="mailto:team@amad.ae">team@amad.ae</a>';
+      directUl.querySelector("li:nth-child(3)").innerHTML =
         '<span class="label">' +
         escapeHtml(t.lblUae) +
         '</span><br /><a href="tel:+971542442404">+971 54 244 2404</a><br /><a href="tel:+971543446448">+971 54 344 6448</a>';
-      directUl.querySelector("li:nth-child(3)").innerHTML =
+      directUl.querySelector("li:nth-child(4)").innerHTML =
         '<span class="label">' +
         escapeHtml(t.lblIraq) +
         '</span><br /><a href="tel:+9647707747773">+964 770 774 7773</a><br /><a href="tel:+9647700507001">+964 770 050 7001</a>';
@@ -379,6 +397,38 @@
     var d = document.createElement("div");
     d.textContent = s;
     return d.innerHTML;
+  }
+
+  function goldFirstHtml(s) {
+    if (!s || s.length === 0) return "";
+    return (
+      '<span class="text-gold">' +
+      escapeHtml(s.charAt(0)) +
+      "</span>" +
+      escapeHtml(s.slice(1))
+    );
+  }
+
+  /** Gold A (Al), M (Moheet), A (Al), D (Dahabi) in English legal-style names. */
+  function goldAmadLettersEnHtml(name) {
+    if (!name || name.length === 0) return "";
+    var goldAt = {};
+    goldAt[0] = true;
+    var iM = name.indexOf("Moheet");
+    if (iM >= 0) goldAt[iM] = true;
+    var iSecondAl = name.indexOf(" Al ");
+    if (iSecondAl >= 0) goldAt[iSecondAl + 1] = true;
+    var iD = name.indexOf("Dahabi");
+    if (iD >= 0) goldAt[iD] = true;
+    var out = "";
+    for (var i = 0; i < name.length; i++) {
+      if (goldAt[i]) {
+        out += '<span class="text-gold">' + escapeHtml(name.charAt(i)) + "</span>";
+      } else {
+        out += escapeHtml(name.charAt(i));
+      }
+    }
+    return out;
   }
 
   document.addEventListener("DOMContentLoaded", function () {

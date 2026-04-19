@@ -78,6 +78,10 @@ a.brand-instagram:hover {
   border-bottom-color: var(--gold);
 }
 
+.text-gold {
+  color: var(--gold);
+}
+
 .footer-copy a.brand-instagram {
   color: var(--text-muted);
 }
